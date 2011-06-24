@@ -101,6 +101,10 @@ class StringFilters extends FilterCollection {
         }
         return $text;
     }
+
+    static function lower($String){
+        return strtolower((string)$String);
+    }
 }
 
 class NumberFilters extends FilterCollection {
@@ -331,7 +335,7 @@ class DatetimeFilters extends FilterCollection {
 }
 
 /*  Ultizie php funciton as Filters */
-h2o::addFilter(array('md5', 'sha1', 'numberformat'=>'number_format', 'wordwrap', 'trim', 'upper' => 'strtoupper', 'lower' => 'strtolower'));
+h2o::addFilter(array('md5', 'sha1', 'numberformat'=>'number_format', 'wordwrap', 'trim', 'upper' => 'strtoupper'));
 
 /* Add filter collections */
 h2o::addFilter(array('CoreFilters', 'StringFilters', 'NumberFilters', 'DatetimeFilters', 'HtmlFilters'));
