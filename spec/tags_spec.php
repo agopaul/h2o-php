@@ -7,6 +7,20 @@ class Describe_if_tag extends SimpleSpec {
         $results = h2o('{% if 4 > 3 %}yes{% endif %}')->render();
         expects($results)->should_be('yes');
     }
+
+    function should_evaluare_presence_of_value_in_array() {
+        $result = h2o("{% if 46 in arr %}yes{% else %}no{% endif %}")->render(array(
+            "arr" => array(45, 46, "47")
+        ));
+        expects($result)->should_be("yes");
+    }
+
+    function should_evaluare_missing_value_in_array() {
+        $result = h2o("{% if 4 in arr %}yes{% else %}no{% endif %}")->render(array(
+            "arr" => array(1, 2, 3)
+        ));
+        expects($result)->should_be("no");
+    }
 }
 
 
